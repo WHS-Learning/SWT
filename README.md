@@ -1,0 +1,1 @@
+Dieses Dokument sollte nicht geteilt werden. Streng genommen ist es nicht einmal für die Öffentlichkeit bestimmt. Das Dokument ist nur für Private zwecke gedacht und sollte auf gar keinen Fall an Proffessoren weiter gegeben werden!

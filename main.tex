@@ -1,0 +1,54 @@
+\documentclass[11pt, oneside, ngerman]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{config/style}
+\usepackage{config/code}
+\usepackage{glossaries}
+\usepackage{biblatex}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, chains, decorations.pathmorphing, patterns}
+
+\addbibresource{references.bib}
+
+\makeglossaries
+
+\begin{document}
+
+    \include{config/globals}
+    \include{titlepage}
+
+    \clearpage
+    \thispagestyle{empty}
+    \pagenumbering{gobble}
+
+    \include{copyright}
+    \include{abstract}
+
+    \clearpage
+    \pagenumbering{roman} 
+    \tableofcontents
+
+    \clearpage
+    \pagenumbering{arabic}
+
+    \part{Semesterzusammenfassung}
+
+    \include{chapters/chap1}
+
+    \clearpage
+    \pagestyle{empty}
+    \pagenumbering{roman}
+    \setcounter{page}{1}
+
+    \phantomsection
+    \addcontentsline{toc}{chapter}{Bibliography}
+    \printbibliography
+
+    \include{appendices} % Anhänge
+
+\end{document}
