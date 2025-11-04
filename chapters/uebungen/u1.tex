@@ -1,0 +1,123 @@
+\chapter{Übungsblatt 1}
+
+\section{Aufgabe 1}
+
+\subsection{Wiederholungsfragen aus ERP und ORP}
+
+\textit{Was ist der Unterschied zwischen einer Klasse und einem Objekt?}
+
+Ein Objekt ist eine Instanz einer Klasse. Die Klasse gibt den Bauplan vor und das Objekt existiert nach diesen.
+
+\hrulefill 
+
+\textit{Was ist der Unterschied zwischen public, private und protected?}
+
+public ist für jede andere Klasse sichtbar, private nur innerhalb der Klasse und protected innerhalb der Klasse und allen Kindern der klasse.
+
+\hrulefill
+
+\textit{Was ist der Unterschied zwischen einem Interface und einer abstrakten Klasse?}
+
+Eine abstrakte klasse gibt vor wie sich eine Kindklasse verhalten muss und ein Interface gibt ein versprechen, wie sich eine Klasse verhält.
+
+\hrulefill 
+
+\textit{Was ist der Unterschied zwischen statischen und nicht-statischen Methoden?}
+
+Eine Statische methode kann nicht überschrieben werden. Außerdem ist sie in jeder Instanz der klasse identisch.
+
+\hrulefill 
+
+\textit{Was ist Kapselung? Finden Sie ein Beispiel im Code.}
+
+\dots
+
+\hrulefill
+
+\textit{Was ist Polymorphie? Finden Sie ein Beispiel im Code.}
+
+\dots
+
+\hrulefill 
+
+\textit{Was ist Vererbung? Finden Sie ein Beispiel im Code.}
+
+\dots
+
+\hrulefill
+
+\textit{Finden Sie den Bug bei der Verwendung von Heiltränken?}
+
+Wenn Energy hinzugefügt wird wodurch die Energy größer ist als die maxHealth wird der Aufruf einfach ins void geschickt und es passiert nix.
+
+\subsection{Implementieren Sie (schriftlich, keine echte Implementierung):}
+
+\textit{Was ist Kapselung? Finden Sie ein Beispiel im Code.}
+
+\hrulefill
+
+\textit{ein Gift, mit dem der Character 20 Lebenspunkte verliert.}
+
+void poisen(Character char) {
+    char.getHealth().addHealth(-20);
+}
+
+\hrulefill 
+
+\textit{einen Heiltrank, mit dem der Character komplett geheilt wird.}
+
+void healFull(Character char) {
+    Health h = char.getHealth();
+    h.addHealth(h.getMaxHealth() - h.getCurrentHealth());
+}
+
+\hrulefill 
+
+\textit{einen Stärkungszauber, der die maximalen Lebenspunkte eines Characters um 30 erhöht.}
+
+void increaseMaxHP(Character char) {
+    Health h = char.getHealth();
+    h.setMaxHealth(h.getMaxHealth() + 30)
+}
+
+\hrulefill
+
+\subsection{Welche Teile des Codes mussten Sie ändern?}
+
+Durch den Character Parameter egal. Wenn der Parameter nicht erwünscht ist muss das ganze in die Character klasse rein.
+
+\section{Aufgabe 2}
+
+\subsection{Beschreiben Sie die grundsätzlichen Unterschiede zwischen projektbasierter und produktbasierter Software.}
+
+Bei der Projektbasierten Software handelt es sich um ein einmaldiges Unterfangen, welches nach Spezifikationen eines Auftragsgebers stattfindet. 
+Produktbasiete Software wird dauerhaft erweitert und sofort an den Endkunden vertrieben.
+
+\hrulefill
+
+\subsection{Wie unterscheidet sich die Motivation eines Herstellers von projektbasierter Software von der eines Herstellers von produktbasierter Software?}
+
+Bei Projektbasierter Software soll der Auftragsgeber zufriedengestellt werden und bei Produktbasierter Software verdient der Entwickler mit, die 
+Software soll sich auf den Markt gut vertreiben.
+
+\hrulefill
+
+\subsection{Warum ist es oft wichtig, dass produktbasierte Software schnell auf den Markt gebracht wird?}
+
+Bei Produktbasierter Software verdient der Entwickler erst Geld, sobald diese am Markt ist.
+
+\hrulefill
+
+\subsection{Warum ist es eine gute Idee, zuerst einen Prototypen entwickeln, bevor man ein neues Software-Produkt erstellt?}
+
+Um zu gucken ob die Software gut am Markt ankommt und um früh Feedback zu bekommen.
+
+\section{Aufgabe 3}
+
+\subsection{Welche Herausforderungen und Probleme wird Software Engineering in den nächsten 20 Jahren zu bewältigen haben?}
+
+\begin{itemize}
+    \item KI
+    \item Das 2035 Problem
+    \item Depression haha (:
+\end{itemize}

@@ -6,16 +6,11 @@
 \usepackage{config/style}
 \usepackage{config/code}
 \usepackage{glossaries}
-\usepackage{biblatex}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning, chains, decorations.pathmorphing, patterns}
-
-\addbibresource{references.bib}
-
-\makeglossaries
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, chains, decorations.pathmorphing, patterns, positioning, arrows.meta, shadows}
 
 \begin{document}
 
@@ -39,15 +34,16 @@
     \part{Semesterzusammenfassung}
 
     \include{chapters/chap1}
+    \include{chapters/chap2}
+
+    \part{Übungsaufgaben}
+
+    \include{chapters/uebungen/u1}
 
     \clearpage
     \pagestyle{empty}
     \pagenumbering{roman}
     \setcounter{page}{1}
-
-    \phantomsection
-    \addcontentsline{toc}{chapter}{Bibliography}
-    \printbibliography
 
     \include{appendices} % Anhänge
 

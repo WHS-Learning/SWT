@@ -1,0 +1,301 @@
+\chapter{Vorgehensmodelle}
+
+\section{Phasen eines Softwaresystems}
+
+Softwaresysteme durchlaufen im Wesentlichen einen Lebenszyklus, der sich in Phasen aufteilen lässt. Eine gängige Gliederung umfasst:
+
+\begin{enumerate}
+    \item \textbf{Idee} (Was ist das Problem/die Vision?)
+    \item \textbf{Konzept} (Was soll die Software tun? Anforderungen.)
+    \item \textbf{Lösung} (Wie soll es umgesetzt werden? Architektur, Design.)
+    \item \textbf{Realisierung} (Die eigentliche Implementierung/Codierung.)
+    \item \textbf{Test} (Verifikation und Validierung.)
+    \item \textbf{Betrieb} (Auslieferung, Wartung und Weiterentwicklung.)
+\end{enumerate}
+
+Diese Phasen müssen durchlaufen werden. Da es hierfür nicht \textit{die} eine Vorgehensweise gibt, wurden verschiedene Vorgehensmodelle entwickelt. Je nach Projekt und dessen Anforderungen eignet sich ein anderes Modell.
+
+% --- HINWEIS: Diesen Abschnitt habe ich für einen besseren Flow hierher verschoben ---
+\section{Arten von Vorgehensmodellen (Überblick)}
+
+Vorgehensmodelle sind wie \textit{Schablonen}, die man verwenden und anpassen kann, um einen Software-Lebenszyklus zu erstellen. Sie geben beispielsweise an, welche Phasen wie, wann und wie oft durchlaufen werden. Im Englischen: \textbf{Software Life Cycle Model (SLCM)}.
+
+Die wichtigsten Arten von Vorgehensmodellen sind:
+\begin{itemize}
+    \item \textbf{Planbasiert (z.B. Wasserfall)}
+    \begin{itemize}
+        \item Phasen werden sequentiell aufgeführt.
+        \item Detaillierte Planung am Anfang.
+        \item Vollständiges Produkt erst am Ende.
+        \item Kein Wert für den Kunden vor Projektende.
+    \end{itemize}
+    \item \textbf{Inkrementell}
+    \begin{itemize}
+        \item System wird in Teilen gebaut. Noch nicht fertige Teile bekommen Dummy-Funktionalität.
+        \item Jede Iteration ergibt ein lauffähiges Produkt mit Teilfunktionalität.
+        \item Fertiggestellte Systeme werden in späteren Iterationen typischerweise nicht mehr verändert.
+    \end{itemize}
+    \item \textbf{Evolutionär / Agil (z.B. Scrum)}
+    \begin{itemize}
+        \item Initiale Grob-Planung zu Beginn.
+        \item In jeder Iteration: Anforderungsanalyse, Design, Implementierung, Testen, Delivery.
+        \item Änderungen sind erwünscht und willkommen.
+        \item Fertiggestellte Teile des Systems können, wenn nötig, jederzeit verändert werden.
+        \item Jede Iteration soll mehr Wert für den Kunden bringen.
+        \item Kunde ist früh in die Entwicklung eingebunden und kann diese besser beeinflussen.
+    \end{itemize}
+\end{itemize}
+
+% --- Ab hier die spezifischen Modelle ---
+
+\section{Wasserfall und V-Modell}
+
+\subsection{Wasserfall Modell}
+
+Das Wasserfallmodell ist das klassische, lineare und \textbf{streng sequentielle} Vorgehensmodell im Software-Engineering. Der Name leitet sich davon ab, dass der Prozess wie Wasser in einem Wasserfall Stufe für Stufe "nach unten" fließt.
+[Image of Waterfall software model diagram]
+
+Das Kernprinzip ist, dass jede Phase (z.B. Idee, Konzept, Lösung, ...) genau einmal durchlaufen wird. Eine neue Phase beginnt erst dann, wenn die vorherige Phase \textbf{vollständig abgeschlossen} und formal abgenommen (z.B. durch ein "Sign-off") wurde.
+
+Es gibt in der reinen Lehre dieses Modells \textbf{keine Rücksprünge} (Iterationen oder Loops) zu früheren Phasen. Einmal getroffene Entscheidungen (z.B. im Konzept) werden in späteren Phasen (z.B. Realisierung) nicht mehr grundlegend geändert.
+
+\subsection{V-Modell}
+
+Das V-Modell ist eine Erweiterung des Wasserfallmodells. Es ergänzt das lineare Phasenmodell um den Aspekt der \textbf{Qualitätssicherung} parallel zu jeder Entwurfsphase.
+
+Die charakteristische V-Form entsteht, indem den Phasen des \textbf{Entwurfs} (linker Ast des "V") spezifische Phasen der \textbf{Verifikation und Validierung} (rechter Ast des "V") gegenübergestellt werden.
+
+Der linke Ast beschreibt die Detaillierung des Systems (vom Groben zum Feinen):
+\begin{itemize}
+    \item \textbf{Anforderungsdefinition:} Was soll das System tun?
+    \item \textbf{Systementwurf:} Wie ist die Gesamtarchitektur (Grobentwurf)?
+    \item \textbf{Komponentenentwurf:} Wie sind die einzelnen Module aufgebaut (Feinentwurf)?
+    \item \textbf{Implementierung:} Die Codierung der Module am tiefsten Punkt des "V".
+\end{itemize}
+
+Der rechte Ast beschreibt die Integration und Prüfung (vom Feinen zum Groben):
+\begin{itemize}
+    \item \textbf{Modultest (Komponententest):} Testet einzelne Module gegen den Komponentenentwurf.
+    \item \textbf{Integrationstest:} Testet das Zusammenspiel der Module gegen den Systementwurf.
+    \item \textbf{Systemtest:} Testet das Gesamtsystem gegen die Anforderungsdefinition.
+    \item \textbf{Abnahmetest:} Der Auftraggeber validiert das System.
+\end{itemize}
+
+Das Kernprinzip ist, dass jede Entwurfsphase auf der linken Seite die Grundlage für die Testspezifikation der gegenüberliegenden Testphase auf der rechten Seite liefert. So werden beispielsweise die Abnahmetestfälle bereits während der Anforderungsdefinition geplant.
+
+\begin{figure}[h!]
+    \centering
+    % Definition der Stile für die TikZ-Grafik
+    % --- Dein TikZ-Code bleibt 1:1 erhalten ---
+    \tikzset{
+        devbox/.style = {rectangle, draw=blue!50!black, fill=blue!10, thick, minimum width=3.5cm, minimum height=1cm, text centered, text width=3.5cm},
+        testbox/.style = {rectangle, draw=green!50!black, fill=green!10, thick, minimum width=3.5cm, minimum height=1cm, text centered, text width=3.5cm},
+        flow/.style = {-{Stealth[length=3mm]}, thick},
+        link/.style = {dashed, gray, thick}
+    }
+    \begin{tikzpicture}[node distance=1.5cm and 1cm]
+        \node (anf) [devbox] {Anforderungsdefinition};
+        \node (sys) [devbox, below=1cm of anf] {Systementwurf};
+        \node (komp) [devbox, below=1cm of sys] {Komponentenentwurf};
+        \node (impl) [devbox, below=1cm of komp] {Implementierung};
+        \node (abn) [testbox, right=4cm of anf] {Abnahmetest};
+        \node (syst) [testbox, right=4cm of sys] {Systemtest};
+        \node (int) [testbox, right=4cm of komp] {Integrationstest};
+        \node (mod) [testbox, right=4cm of impl] {Modultest (Komponententest)};
+        \draw [flow, blue!70!black] (anf) -- (sys);
+        \draw [flow, blue!70!black] (sys) -- (komp);
+        \draw [flow, blue!70!black] (komp) -- (impl);
+        \draw [flow, green!60!black] (mod) -- (int);
+        \draw [flow, green!60!black] (int) -- (syst);
+        \draw [flow, green!60!black] (syst) -- (abn);
+        \draw [flow, blue!70!black] (impl) -- ++(0,-0.75) -| (mod.south);
+        \draw [link] (anf.east) -- (abn.west) node [midway, above, font=\tiny, color=black] {definiert Testfälle für};
+        \draw [link] (sys.east) -- (syst.west) node [midway, above, font=\tiny, color=black] {definiert Testfälle für};
+        \draw [link] (komp.east) -- (int.west) node [midway, above, font=\tiny, color=black] {definiert Testfälle für};
+        \draw [link] (impl.east) -- (mod.west) node [midway, above, font=\tiny, color=black] {definiert Testfälle für};
+    \end{tikzpicture}
+    \caption{Schematische Darstellung des V-Modells}
+    \label{fig:v-modell-tikz}
+\end{figure}
+
+
+\subsection{Annahmen von Wasserfall und V-Modell}
+
+Diese Modelle basieren auf einigen Annahmen, die in der Praxis oft problematisch sind:
+
+\begin{itemize}
+    \item \textbf{Perfekte Vorkenntnisse:} Der Auftraggeber und Auftragnehmer müssen ganz genau wissen, was sie wollen und was zu tun ist. Oft ist am Anfang eines Projektes aber nicht genau klar, was gebraucht wird. Der Auftraggeber kann sich nicht genau vorstellen, wie sein System aussehen soll und vermeidet deswegen, Entscheidungen zu treffen.
+    
+    \item \textbf{Vollständige Analyse:} Alle Probleme müssen am Anfang des Projektes vollständig analysiert werden. Dies ist nur selten möglich und noch seltener erwünscht, da dies sehr viel kostet. Oft ist nicht genug Zeit, um am Anfang Wochen oder Monate in die Analyse zu stecken.
+    
+    \item \textbf{Geringe Flexibilität:} Die Software ist sehr unflexibel und es werden nur sehr wenig Änderungen erwartet. Der Auftraggeber ist oft nur über Dokumentation in das Projekt eingebunden. Die Kommunikation ist darüber sehr schwierig und es kommt oft zu Missverständnissen. Der Auftraggeber realisiert oft erst in der Testphase, was noch fehlt und was er braucht.
+\end{itemize}
+
+\subsection{Schwächen von Wasserfall und V-Modell}
+
+\begin{itemize}
+    \item Das Wasserfallmodell macht die Annahme, dass jede Phase vollständig und fehlerfrei beendet wird und auf die nachfolgende Phase aufbaut.
+    \item Ist dies nicht der Fall (was es oft ist), ist Nacharbeit einer bereits beendeten Phase nötig.
+    \item Diese Nacharbeit ist kein Teil vom Wasserfall und damit nicht Teil der Projektplanung. Hierdurch entstehen also zusätzliche Kosten und Zeitbedarf.
+    \item Beim V-Modell ist dies ähnlich: Obwohl Tests früher geplant werden, erfolgt die \textit{Durchführung} der wichtigen Tests (System-, Abnahmetest) erst sehr spät im Prozess.
+\end{itemize}
+
+\subsection{Stärken von Wasserfall und V-Modell}
+
+Der Wasserfall (und das V-Modell) eignet sich gut für Projekte mit \textbf{stabilen Anforderungen}, in denen der Auftraggeber ganz genau weiß, was er will. Beispielsweise für die Anpassung der Steuersoftware des Finanzamts für ein neues Steuerjahr.
+
+Außerdem eignet er sich gut für \textbf{Kritische Systeme}:
+
+\begin{itemize}
+    \item \textbf{Safety-critical:} Softwarefehler können Menschen verletzen oder töten, z.B. in der Luftfahrt und Medizin.
+    \item \textbf{Mission-critical:} Softwarefehler können das gesamte System zerstören, z.B. in der Raumfahrt.
+    \item \textbf{Business-critical:} Softwarefehler können in hohen Kosten resultieren, z.B. Trading-Software.
+\end{itemize}
+
+Zudem eignet sich der Wasserfall gut für sehr große Systeme, da er eine klare Struktur und definierte Meilensteine (Phasenabschlüsse) vorgibt.
+
+% --- Dieser Abschnitt wurde nach oben verschoben ---
+% \section{Vorgehensmodelle}
+% ...
+
+\section{Agilität}
+
+\subsection{Das Agile Manifest: 12 Prinzipien}
+
+\begin{enumerate}
+    \item Unsere höchste Priorität ist es, den Kunden durch frühe und kontinuierliche Auslieferung wertvoller Software zufrieden zu stellen.
+    \item Heiße Anforderungsänderungen selbst spät in der Entwicklung willkommen. Agile Prozesse nutzen Veränderungen zum Wettbewerbsvorteil des Kunden.
+    \item Liefere funktionierende Software regelmäßig innerhalb weniger Wochen oder Monate und bevorzuge dabei die kürzere Zeitspanne.
+    \item Fachexperten und Entwickler müssen während des Projektes täglich zusammenarbeiten.
+    \item Errichte Projekte rund um motivierte Individuen. Gib ihnen das Umfeld und die Unterstützung, die sie benötigen und vertraue darauf, dass sie die Aufgabe erledigen.
+    \item Die effizienteste und effektivste Methode, Informationen an und innerhalb eines Entwicklungsteams zu übermitteln, ist im Gespräch von Angesicht zu Angesicht.
+    \item Funktionierende Software ist das wichtigste Fortschrittsmaß.
+    \item Agile Prozesse fördern nachhaltige Entwicklung. Die Auftraggeber, Entwickler und Benutzer sollten ein gleichmäßiges Tempo auf unbegrenzte Zeit halten können.
+    \item Ständiges Augenmerk auf technische Exzellenz und gutes Design fördert Agilität.
+    \item Einfachheit — die Kunst, die Menge nicht getaner Arbeit zu maximieren — ist essenziell.
+    \item Die besten Architekturen, Anforderungen und Entwürfe entstehen durch selbstorganisierte Teams.
+    \item In regelmäßigen Abständen reflektiert das Team, wie es effektiver werden kann und passt sein Verhalten entsprechend an.
+\end{enumerate}
+
+\subsection{Scrum}
+
+Scrum ist eine agile Methode. Scrum ist, per Definition, \textit{kein} starres Vorgehensmodell, sondern ein \textbf{Framework} (Rahmenwerk). Es wird in der Praxis aber oft genutzt, um den Software-Lebenszyklus zu strukturieren.
+
+Bei Scrum wird jeder in Rollen eingeteilt:
+\begin{itemize}
+    \item \textbf{Scrum-Master}: Verantwortlich dafür, dass Scrum korrekt ausgeführt wird und dass Hindernisse (Impediments) für das Team beseitigt werden.
+    \item \textbf{Product Owner}: Verantwortlich für die Maximierung des Wertes des zu entwickelnden Produkts; managt das Product Backlog.
+    \item \textbf{Developers}: Entwickeln als selbstorganisiertes Team die Software.
+    \item \textbf{Scrum-Team}: Scrum Master + Product Owner + Developers (das gesamte Team).
+\end{itemize}
+
+Scrum besteht aus mehreren Kern-Elementen (Events und Artefakten):
+
+\subsubsection{Product Goal}
+Das Product Goal beschreibt das langfristige Ziel, das das Produkt letztlich erreichen soll.
+
+\subsubsection{Product Backlog}
+Eine priorisierte To-do-Liste von Bugs, Features und Verbesserungen für das gesamte Produkt.
+
+\subsubsection*{Product Backlog Beispiel}
+% --- HINWEIS: Das hier ist jetzt eine saubere Tabelle ---
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|p{10cm}|}
+        \hline
+        \textbf{Priorität} & \textbf{Typ} & \textbf{Product Backlog Item (User Story / Task)} \\
+        \hline
+        1 & Feature & Als Lehrer möchte ich definieren können, welche Lern-Werkzeuge für welche Klassen verfügbar sind. \\
+        \hline
+        2 & Feature & Als Elternteil möchte ich die Hausaufgaben meiner Kinder einsehen, die ihnen von ihrem Lehrer aufgegeben wurden. \\
+        \hline
+        3 & Feature & Als ein Lehrer von jungen Kindern möchte ich ein User-Interface mit Bildern haben für Kinder, die noch nicht gut lesen können. \\
+        \hline
+        4 & Entwicklungs-Aktivität & Kriterien ausarbeiten für die Auswahl und Bewertung von Open Source Software, die für Teile des Systems genutzt werden könnte. \\
+        \hline
+        5 & Verbesserung & Refactoring des User Interface Codes für bessere Lesbarkeit und Performance. \\
+        \hline
+        6 & Verbesserung & Implementierung von Verschlüsselung für persönliche Daten von Usern. \\
+        \hline
+    \end{tabular}
+    \caption{Beispiel-Ausschnitt eines Product Backlogs}
+\end{table}
+
+
+\subsubsection{Sprint}
+Scrum ist in Sprints aufgeteilt. Ein Sprint ist ein fester Zeitrahmen (Timebox) von in der Regel 2-4 Wochen. Er stellt den Rahmen für alle Aktivitäten in Scrum.
+
+\subsubsection{Increment}
+Am Ende jedes Sprints steht ein lauffähiges "Increment" (Produkt-Zuwachs), das potenziell auslieferbar ist und mehr Wert hat als vor dem Sprint.
+
+\subsubsection{Sprint Planning}
+Das Sprint Planning ist ein Scrum-Event zu Beginn des Sprints (ca. 4-8 Stunden). Es werden 3 Themen behandelt:
+\begin{enumerate}
+    \item \textbf{Warum?} Das Ziel des Sprints (Sprint Goal) wird definiert.
+    \item \textbf{Was?} Auswahl aus dem Product Backlog: Was kann in diesem Sprint erreicht werden?
+    \item \textbf{Wie?} Definition von Tasks: Wie kann die Arbeit durch die Developers erreicht werden?
+\end{enumerate}
+
+\subsubsection{Sprint Backlog}
+Enthält die Ergebnisse des Sprint Planning. Dazu zählen:
+\begin{itemize}
+    \item Das Ziel des Sprints (Sprint Goal)
+    \item Die ausgewählten Product Backlog Items
+    \item Die detaillierten Entwicklungs-Tasks
+\end{itemize}
+
+\subsubsection{Daily Scrum}
+Tägliches Meeting (Timebox: max. 15 Min.) für die Developers. Typische Themen zur Synchronisierung:
+\begin{itemize}
+    \item Was habe ich gestern getan, um das Sprint Goal zu erreichen?
+    \item Was werde ich heute tun?
+    \item Welche Hindernisse (Impediments) sehe ich?
+\end{itemize}
+
+
+\subsubsection{Definition of Done (DoD)}
+Definiert, wann ein Product Backlog Item wirklich "fertig" ist (Qualitätsstandard). z.B.:
+\begin{itemize}
+    \item Code gemerged
+    \item Alle Tests sind grün (Unit-, Integrationstests)
+    \item Code-Review erfolgt
+    \item 80\% Code Coverage erreicht
+    \item Dokumentation aktualisiert
+\end{itemize}
+
+\subsubsection{Sprint Review}
+Ein Scrum-Event am Ende des Sprints (ca. 2-4 Stunden). Das Scrum-Team stellt das Increment den Stakeholdern (z.B. Kunde, Management) vor. Gemeinsam wird überlegt, ob man auf dem richtigen Weg ist und was als Nächstes zu tun ist (Anpassung Product Backlog).
+
+\subsubsection{Sprint Retrospective}
+Ein Scrum-Event ganz am Ende des Sprints (ca. 1-3 Stunden). Nur das Scrum-Team diskutiert, was im letzten Sprint gut und was schlecht gelaufen ist (Prozess, Zusammenarbeit). Das Team entscheidet selbst, was es ändern muss, um im nächsten Sprint effektiver zu werden.
+
+\subsubsection{Backlog Refinement (oder Grooming)}
+Findet durchgehend während des Sprints statt (oft als separates Meeting). Product Backlog Items werden vom Team (oft mit Product Owner) priorisiert, detailliert, in kleinere Items zerlegt und auf ihren Aufwand hin abgeschätzt.
+
+\subsection{Eigenschaften agiler Teammitglieder}
+% --- HINWEIS: Das war vorher ein Fließtext, jetzt eine Liste ---
+\begin{itemize}
+    \item \textbf{Selbstorganisation:} Fähigkeit, Aufgaben eigenständig zu priorisieren und umzusetzen.
+    \item \textbf{Kollaborationsfähigkeit:} Offene Kommunikation, aktives Zuhören, Wissensaustausch.
+    \item \textbf{Verantwortungsbewusstsein:} Übernahme von Verantwortung für Ergebnisse (Outcome) und nicht nur für die Erledigung von Aufgaben (Output).
+    \item \textbf{Lernbereitschaft:} Offenheit für Feedback, kontinuierliches Lernen.
+    \item \textbf{Transparenz:} Arbeitsergebnisse und Fortschritte sichtbar machen.
+    \item \textbf{Technische Exzellenz:} Fundierte Fähigkeiten, oft in mehreren Fachgebieten (T-Shaped / Full-Stack).
+\end{itemize}
+
+\subsection{Vergleich Produkt- vs. Projektbasierte Software}
+
+\begin{itemize}
+    \item \textbf{Produkt-Software} (z.B. eine App, die stetig weiterentwickelt wird)
+    \begin{itemize}
+        \item Verwendet so gut wie immer agiles Vorgehen.
+        \item Ermöglicht frühen und schnellen Gang an den Markt.
+        \item Erleichtert schnelles Reagieren auf Kundenwünsche oder Marktänderungen.
+    \end{itemize}
+    
+    \item \textbf{Projekt-Software} (z.B. eine Individualsoftware für einen festen Kunden)
+    \begin{itemize}
+        \item Nutzt Agil nur, wenn eine gute Vertrauensbasis mit dem Kunden vorhanden ist.
+        \item Oft eher inkrementell oder (bei stark vertrags-lastiger Kundenbeziehung) sogar Wasserfall-artig.
+    \end{itemize}
+\end{itemize}
